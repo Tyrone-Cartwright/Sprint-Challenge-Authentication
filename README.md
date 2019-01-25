@@ -29,9 +29,21 @@ Implement an User Authentication System in order to access the jokes from the Jo
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. What is the purpose of using _sessions_?
+   Sessions are used to allow a server to store information about a client, this information can be used in a variety of purposes like persist data across requests or persist authentication so there is no need to re-enter credentials on every new request the client makes to the server.
+
 1. What does bcrypt do to help us store passwords in a secure manner.
+   BCRYPT hashes passwords into a fixed length, to make it more secure
+   you can add a custom salt or bcrypt will provide a default one that will be appended to the original pwd prior to hashing.
+
 1. What does bcrypt do to slow down attackers?
-1. What are the three parts of the JSON Web Token?
+   BCRYPT provides a way to hash passwords which takes a clients password and utilizes the Key Derivation Function which iterates over a number of rounds given(2^10(recommended 12 minimum))
+   and implements salting to prevent rainbow attacks.
+
+1) What are the three parts of the JSON Web Token?
+   The three parts of a JWT:
+   Header: Information about the token
+   Payload: Where we are saving the data
+   Signature: Verify if token is valid and not nullified
 
 ## Project Set Up
 
@@ -48,9 +60,9 @@ Follow these steps for completing your project:
 
 - [ ] `cd` into the root of the project and run `yarn` to install dependencies.
 - [ ] Once you have your `node_modules` go ahead and run `yarn server` or `npm run server` to start your node server.
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
 - [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by  merging the branch back into master.
+- [ ] PM then will count the HW as done by merging the branch back into master.
 
 Helpful Tip on Testing this Project:
 
