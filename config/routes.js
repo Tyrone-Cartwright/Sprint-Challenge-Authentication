@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");
-const { authenticate } = require("../auth/authenticate");
+const { authenticate, generateToken } = require("../auth/authenticate");
 const bcrypt = require("bcryptjs");
 
 const db = knex(knexConfig.development);
@@ -30,6 +30,19 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
+  const creds = req.body;
+  db("users")
+    .where({ username: creds.username })
+    .first()
+    .then(user => {
+      if (user && bcrypt.compareSync(creds.password, user.password)) {
+        const token = generateToken(user);
+        res.status(200).json({ message: `Welcome ${user.name}`, token });
+      } else {
+        res.status(401).json({ message: "You can not enter!!" });
+      }
+    })
+    .catch(err => res.status(500).json(err));
 }
 
 function getJokes(req, res) {
