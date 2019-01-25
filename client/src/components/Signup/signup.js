@@ -54,7 +54,7 @@ class Signup extends React.Component {
           .post(logPoint, this.state)
           .then(res => {
             localStorage.setItem("jwt", res.data.token);
-            window.location.replace("/users");
+            window.location.replace("/api/signin");
           })
           .catch(err => console.log(err));
         // console.log(res.data);

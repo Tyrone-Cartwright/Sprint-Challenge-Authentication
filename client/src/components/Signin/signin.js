@@ -29,7 +29,7 @@ class Signin extends React.Component {
           />
         </div>
         <div>
-          <button type="submit">Signin</button>
+          <button type="submit">Sign In</button>
         </div>
       </form>
     );
