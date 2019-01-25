@@ -13,7 +13,7 @@ class Jokes extends React.Component {
         <h2>List of Jokes</h2>
         <ul>
           {this.state.jokes.map(joke => (
-            <li key={joke.id}>{joke.id}</li>
+            <li key={joke.id}>{joke.joke}</li>
           ))}
         </ul>
       </>
@@ -35,7 +35,7 @@ class Jokes extends React.Component {
 
       const response = await axios.get(endpoint, requestOptions);
 
-      this.setState({ jokes: response.data.jokes });
+      this.setState({ jokes: response.data });
     } catch (error) {
       console.error("we ran into an issue getting the jokes");
     }
