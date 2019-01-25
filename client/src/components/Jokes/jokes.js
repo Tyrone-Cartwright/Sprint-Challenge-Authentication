@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { list } from "postcss";
+// import { list } from "postcss";
 
 class Jokes extends React.Component {
   state = {
