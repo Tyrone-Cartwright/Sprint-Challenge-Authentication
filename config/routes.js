@@ -8,12 +8,12 @@ const bcrypt = require("bcryptjs");
 const db = knex(knexConfig.development);
 
 module.exports = server => {
-  server.post("/api/register", register);
+  server.post("/api/signup", signup);
   server.post("/api/login", login);
   server.get("/api/jokes", authenticate, getJokes);
 };
 
-function register(req, res) {
+function signup(req, res) {
   // implement user registration
   const userInfo = req.body;
 
